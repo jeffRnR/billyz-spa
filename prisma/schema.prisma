@@ -85,8 +85,8 @@ model Branch {
 model User {
   id           String   @id @default(cuid())
   name         String
-  email        String   @unique
-  phone        String?
+  email        String?   @unique
+  phone        String  @unique
   passwordHash String
   role         Role
   branchId     String? // null only for SUPER_ADMIN
