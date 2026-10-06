@@ -13,4 +13,11 @@ export const loginSchema = z.object({
   password: z.string().min(1, "Enter your password"),
 });
 
+export const loginFormSchema = z.object({
+  phone: z
+    .string()
+    .refine((v) => normalizePhone(v) !== null, "Enter a valid Kenyan phone number"),
+  password: z.string().min(1, "Enter your password"),
+});
+
 export type LoginInput = z.input<typeof loginSchema>;

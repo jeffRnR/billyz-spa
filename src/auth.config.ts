@@ -6,11 +6,8 @@ export const authConfig = {
   providers: [],
   callbacks: {
     authorized({ auth, request }) {
-      const isLoggedIn = !!auth?.user;
-      if (request.nextUrl.pathname === "/login") {
-        return isLoggedIn ? Response.redirect(new URL("/", request.nextUrl)) : true;
-      }
-      return isLoggedIn;
+      if (request.nextUrl.pathname === "/login") return true;
+      return !!auth?.user;
     },
     jwt({ token, user }) {
       if (user) {
